@@ -5,6 +5,11 @@
   </div>
 </div>
 <table class="table table-hover boards__table">
+
+  <% if flash[:notice] %>
+    <div class="alert alert-danger"><%= flash[:notice] %></div>
+  <% end %>
+
   <thead class="thead-dark">
     <tr>
       <th>ID</th>
