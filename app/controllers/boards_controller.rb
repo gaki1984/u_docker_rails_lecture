@@ -27,11 +27,16 @@ class BoardsController < ApplicationController
   end
 
   def edit
+    @board.attributes = flash[:board] if flash[:board]
   end
 
   def update
-    @board.update(board_params)
-    redirect_to @board
+    if @board.update(board_params)
+      redirect_to @board
+    else
+      flash[:error_messages] = @board.errors.full_messages
+      redirect_back fallback_location: root_path
+    end
   end
 
   def destroy
