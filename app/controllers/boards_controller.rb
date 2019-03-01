@@ -35,8 +35,7 @@ class BoardsController < ApplicationController
     if @board.update(board_params)
       redirect_to @board
     else
-      flash[:error_messages] = @board.errors.full_messages
-      redirect_back fallback_location: '/'
+      redirect_back(fallback_location: root_path)
     end
   end
 

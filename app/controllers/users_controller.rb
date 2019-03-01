@@ -9,10 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to mypage_path
     else
-      redirect_to :back, flash: {
-        user: user,
-        error_messages: user.errors.full_messages
-      }
+      redirect_back(fallback_location: root_path)
     end
   end
 
