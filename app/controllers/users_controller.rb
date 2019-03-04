@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to mypage_path
     else
+      flash[:error_messages] = user.errors.full_messages
       redirect_back(fallback_location: root_path)
     end
   end
